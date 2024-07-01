@@ -1,0 +1,4 @@
+com\optimagrowth\license\service\LicenseService.class
+com\optimagrowth\license\model\License.class
+com\optimagrowth\license\LicenseServiceApplication.class
+com\optimagrowth\license\controller\LicenseController.class
