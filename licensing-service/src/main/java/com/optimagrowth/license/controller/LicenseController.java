@@ -29,31 +29,31 @@ public class LicenseController {
                 .getLicense(organizationId, license.getLicenseId()))
                 .withSelfRel(),
                 linkTo(methodOn(LicenseController.class)
-                        .createLicense(organizationId, license, null))
+                        .createLicense(license))
                         .withRel("Create License"),
                 linkTo(methodOn(LicenseController.class)
-                        .updateLicence(organizationId, license))
+                        .updateLicence(license))
                         .withRel("Update License"),
                 linkTo(methodOn(LicenseController.class)
-                        .deleteLicense(license.getLicenseId(), organizationId))
+                        .deleteLicense(license.getLicenseId()))
                         .withRel("Delete License"));
 
         return ResponseEntity.ok(license);
     }
 
     @PutMapping
-    public ResponseEntity<String> updateLicence(@PathVariable String organizationId, @RequestBody License request){
-        return ResponseEntity.ok(licenseService.updateLicense(request, organizationId));
+    public ResponseEntity<License> updateLicence(@RequestBody License request){
+        return ResponseEntity.ok(licenseService.updateLicense(request));
     }
 
     @PostMapping
-    public ResponseEntity<String> createLicense(@PathVariable String organizationId, @RequestBody License request, @RequestHeader(value = "Accept-Language", required = false) Locale locale){
-        return ResponseEntity.ok(licenseService.createLicense(request, organizationId, locale));
+    public ResponseEntity<License> createLicense(@RequestBody License request){
+        return ResponseEntity.ok(licenseService.createLicense(request));
     }
 
     @DeleteMapping("/{licenceId}")
-    public ResponseEntity<String> deleteLicense(@PathVariable String licenceId, @PathVariable String organizationId){
-        return ResponseEntity.ok(licenseService.deleteLicense(licenceId, organizationId));
+    public ResponseEntity<String> deleteLicense(@PathVariable String licenceId){
+        return ResponseEntity.ok(licenseService.deleteLicense(licenceId));
     }
 
 

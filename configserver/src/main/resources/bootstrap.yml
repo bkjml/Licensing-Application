@@ -7,11 +7,10 @@ spring:
     config:
       server:
         native:
-          search-locations: file:///{FILE_PATH}
+          search-locations: classpath:/config  #look in the src/main/resources/config folder
 
 
 server:
-  native:
-#    search-locations: file:///Users/illary.huaylupo
-    search-locations: classpath:/config  #look in the src/main/resources/config folder
   port: 8071
+
+
